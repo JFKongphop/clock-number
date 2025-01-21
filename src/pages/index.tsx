@@ -1,3 +1,4 @@
+import Time from "@/components/times/Time";
 import { useEffect, useState } from "react";
 
 const index = () => {
@@ -15,7 +16,7 @@ const index = () => {
 
   return (
     <div className="text-black">
-      <div className="w-full flex justify-center">
+      <div className="absolute left-1/2 top-[100px] transform -translate-x-1/2 -translate-y-1/2 text-xl">
         <div className="flex">{time.hh}:{time.mm}:{time.ss}</div>
       </div>
       <div 
@@ -28,23 +29,27 @@ const index = () => {
           className="h-1/2 w-[2px] origin-bottom absolute left-1/2 flex flex-col items-center gap-2"
           style={{ transform: `rotate(${time.ss * 6}deg)` }}
         >
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
-          <p style={{ transform: `rotate(${-(time.ss * 6)}deg)` }}>{time.ss}</p>
+          {
+            Array.from({ length: 6 }).map(() => (
+              <Time  
+                rotate={`rotate(${-(time.ss * 6)}deg)`}
+                time={time.ss}
+              />
+            ))
+          }
         </div>
         <div 
           className="h-1/2 w-[2px] origin-bottom absolute left-1/2 flex flex-col items-center gap-2"
           style={{ transform: `rotate(${time.mm * 6}deg)` }}
         >
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
-          <p style={{ transform: `rotate(${-(time.mm * 6)}deg)` }}>{time.mm}</p>
+          {
+            Array.from({ length: 6 }).map(() => (
+              <Time  
+                rotate={`rotate(${-(time.mm * 6)}deg)`}
+                time={time.mm}
+              />
+            ))
+          }
         </div>
         <div 
           className="h-1/2 w-[2px] origin-bottom absolute left-1/2 flex flex-col items-center gap-2"
@@ -52,48 +57,14 @@ const index = () => {
             transform: `rotate(${(time.hh % 12) * 30 + (time.mm / 60) * 30}deg)`
           }}
         >
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
-          <p 
-            style={{
-              transform: `rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`
-            }}
-          >
-            {time.hh}
-          </p>
+          {
+            Array.from({ length: 6 }).map(() => (
+              <Time  
+                rotate={`rotate(${-( (time.hh % 12) * 30 + (time.mm / 60) * 30)}deg)`}
+                time={time.hh}
+              />
+            ))
+          }
         </div>
         {/* <div 
           className="h-1/2 w-[2px] origin-bottom absolute left-1/2 flex flex-col items-center gap-2"
